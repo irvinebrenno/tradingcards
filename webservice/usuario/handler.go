@@ -15,10 +15,10 @@ func AdicionarUsuario(c *gin.Context) {
 		return
 	}
 
-	err := usuario.AdicionarUsuario(&req)
+	id, err := usuario.AdicionarUsuario(&req)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	}
 
-	c.JSON(200, gin.H{"error": nil})
+	c.JSON(200, gin.H{"dados": id})
 }
